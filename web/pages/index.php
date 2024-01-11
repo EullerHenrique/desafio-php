@@ -1,12 +1,10 @@
-<?php include('crud/read/ListarContatos.php'); ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tools</title>
+    <title>Contatos</title>
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- JQUERY -->
@@ -16,8 +14,8 @@
 <body>
 
     <div class="container">
-        <h1 style="text-align: center;">Contatos Tools</h1>
-
+        <h1 style="text-align: center;">Contatos</h1>
+        
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -28,6 +26,7 @@
                 </tr>
             </thead>
             <tbody>
+                <?php include('crud/read/ListarContatos.php'); ?>
                 <?php while ($contato = mysql_fetch_assoc($queryContatos)) { ?>
                     <tr>
                         <td><?php echo $contato['NOME']; ?></td>
