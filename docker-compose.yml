@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+   web:
+    image: prodamin/php-5.3-apache
+    container_name: web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    command: >
+      sh -c "
+        a2enmod headers
+        a2enmod rewrite
+        apt-get update && apt-get install -y apache2-utils libapache2-mod-php5
+        docker-php-ext-install curl
+        apache2-foreground
+      "  
+    depends_on:
+      - database
+   database:
+    image: mysql:5.5
+    container_name: database
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root      
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
