@@ -31,12 +31,12 @@
                 <?php $idContato = $_GET['id']; include('crud/read/BuscarEnderecoContato.php'); ?>
                 <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
                     <tr>
-                        <td><?php echo $contato['RUA']; ?></td>
-                        <td><?php echo $contato['NUMERO']; ?></td>
-                        <td><?php echo $contato['BAIRRO']; ?></td>
-                        <td><?php echo $contato['CIDADE']; ?></td>
-                        <td><?php echo $contato['ESTADO']; ?></td>
-                        <td><?php echo $contato['CEP']; ?></td>
+                        <td><?php echo utf8_encode($contato['RUA']); ?></td>
+                        <td><?php echo utf8_encode($contato['NUMERO']); ?></td>
+                        <td><?php echo utf8_encode($contato['BAIRRO']); ?></td>
+                        <td><?php echo utf8_encode($contato['CIDADE']); ?></td>
+                        <td><?php echo utf8_encode($contato['ESTADO']); ?></td>
+                        <td><?php echo utf8_encode($contato['CEP']); ?></td>
                     </tr>
                 <?php } ?>
             </tbody>
