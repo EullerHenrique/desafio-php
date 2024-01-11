@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php $idContato = $_GET['id']; include('crud/read/BuscarEnderecoContato.php'); ?>
+                <?php include('crud/read/BuscarEnderecoContato.php'); ?>
                 <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
                     <tr>
                         <td><?php echo utf8_encode($contato['RUA']); ?></td>
