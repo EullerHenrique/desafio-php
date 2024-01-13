@@ -21,7 +21,7 @@
 
 <body>
 
-    <header>
+    <header class="mt-4">
     
         <div class="container">
             <h1 style="text-align: center;">Contatos</h1>
@@ -29,7 +29,8 @@
         
     </header>
 
-    <main>
+    <main class="d-flex align-items-center">
+
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
@@ -47,6 +48,7 @@
                     <span>resultados por página</span>
                 </div>
                 <div>
+                    <a class="btn btn-warning me-2"  href="cadastrarContato.php">Importar Excel</a>
                     <a class="btn btn-primary"  href="cadastrarContato.php">Novo Contato</a>
                 </div>
             </div>

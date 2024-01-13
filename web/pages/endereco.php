@@ -17,7 +17,7 @@
 
 <body>
 
-     <header>
+<header class="mt-4">
     
         <div class="container">
             <h1 style="text-align: center;">Endereço - <?php echo $_GET['nome'] ?></h1>
@@ -25,7 +25,7 @@
         
     </header>
 
-    <main>
+    <main class="d-flex align-items-center">
         
         <div class="container">
 

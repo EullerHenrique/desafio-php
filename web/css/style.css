@@ -6,3 +6,8 @@ body {
     background-color: #212529;
     color: #fff;
 }
+
+
+main{
+    height: 80vh;
+}
