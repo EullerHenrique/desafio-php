@@ -9,39 +9,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- JQUERY -->
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- PHP -->
+    <?php include('crud/read/BuscarEnderecoContato.php'); ?>
 </head>
 
 <body>
 
-    <div class="container">
-        <h1 style="text-align: center;">Endereço - Contato</h1>
+     <header>
+    
+        <div class="container">
+            <h1 style="text-align: center;">Endereço - <?php echo $_GET['nome'] ?></h1>
+        </div>
+        
+    </header>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Rua</th>
-                    <th>Número</th>
-                    <th>Bairro</th>
-                    <th>Cidade</th>
-                    <th>Estado</th>
-                    <th>CEP</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php include('crud/read/BuscarEnderecoContato.php'); ?>
-                <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
+    <main>
+        
+        <div class="container">
+
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td><?php echo utf8_encode($contato['RUA']); ?></td>
-                        <td><?php echo utf8_encode($contato['NUMERO']); ?></td>
-                        <td><?php echo utf8_encode($contato['BAIRRO']); ?></td>
-                        <td><?php echo utf8_encode($contato['CIDADE']); ?></td>
-                        <td><?php echo utf8_encode($contato['ESTADO']); ?></td>
-                        <td><?php echo utf8_encode($contato['CEP']); ?></td>
+                        <th>Rua</th>
+                        <th>Número</th>
+                        <th>Bairro</th>
+                        <th>Cidade</th>
+                        <th>Estado</th>
+                        <th>CEP</th>
                     </tr>
-                <?php } ?>
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
+                        <tr>
+                            <td><?php echo utf8_encode($contato['RUA']); ?></td>
+                            <td><?php echo utf8_encode($contato['NUMERO']); ?></td>
+                            <td><?php echo utf8_encode($contato['BAIRRO']); ?></td>
+                            <td><?php echo utf8_encode($contato['CIDADE']); ?></td>
+                            <td><?php echo utf8_encode($contato['ESTADO']); ?></td>
+                            <td><?php echo utf8_encode($contato['CEP']); ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
 
     <!-- BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

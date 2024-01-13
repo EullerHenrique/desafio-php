@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    $_SESSION['perPage'] = isset($_GET['perPage'])? $_GET['perPage'] : 5;; 
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,48 +26,53 @@
         <div class="container">
             <h1 style="text-align: center;">Contatos</h1>
         </div>
+        
     </header>
 
     <main>
         <div class="container">
 
-        <div class="row">
-
-            <div class="d-flex align-items-center mt-3 mb-3">
-                <span class="ms-4">Exibir</span>
-                <select class="form-select perPage ms-3 me-3" onChange="alterarPerPage()">
-                    <option value="5" <?php if ($_GET['perPage'] == 5) echo 'selected'; ?>>5</option>
-                    <option value="10" <?php if ($_GET['perPage'] == 10) echo 'selected'; ?>>10</option>
-                    <option value="15" <?php if ($_GET['perPage'] == 15) echo 'selected'; ?>>15</option>
-                    <option value="20" <?php if ($_GET['perPage'] == 20) echo 'selected'; ?>>20</option>
-                    <option value="25" <?php if ($_GET['perPage'] == 25) echo 'selected'; ?>>25</option>
-                    <option value="50" <?php if ($_GET['perPage'] == 50) echo 'selected'; ?>>50</option>
-                    <option value="100" <?php if ($_GET['perPage'] == 100) echo 'selected'; ?>>100</option>
-                </select>
-                <span>resultados por página</span>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center mt-3 mb-3">
+                    <span class="ms-4">Exibir</span>
+                    <select class="form-select perPage ms-3 me-3" onChange="alterarPerPage()">
+                        <option value="5" <?php if ($_GET['perPage'] == 5) echo 'selected'; ?>>5</option>
+                        <option value="10" <?php if ($_GET['perPage'] == 10) echo 'selected'; ?>>10</option>
+                        <option value="15" <?php if ($_GET['perPage'] == 15) echo 'selected'; ?>>15</option>
+                        <option value="20" <?php if ($_GET['perPage'] == 20) echo 'selected'; ?>>20</option>
+                        <option value="25" <?php if ($_GET['perPage'] == 25) echo 'selected'; ?>>25</option>
+                        <option value="50" <?php if ($_GET['perPage'] == 50) echo 'selected'; ?>>50</option>
+                        <option value="100" <?php if ($_GET['perPage'] == 100) echo 'selected'; ?>>100</option>
+                    </select>
+                    <span>resultados por página</span>
+                </div>
+                <div>
+                    <a class="btn btn-primary ms-auto"  href="cadastrarContato.php">Novo Contato</a>
+                </div>
             </div>
-        
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Telefone</th>
-                        <th>Endereço</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($contato = mysql_fetch_assoc($queryContatos)) { ?>
+            
+            <div>
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td><?php echo utf8_encode($contato['NOME']); ?></td>
-                            <td><?php echo utf8_encode($contato['EMAIL']); ?></td>
-                            <td><?php echo utf8_encode($contato['TELEFONE']); ?></td>
-                            <td><a href="endereco.php?id=<?php echo $contato['ID']; ?>">Visualizar</a></td>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>Endereço</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                        <?php while ($contato = mysql_fetch_assoc($queryContatos)) { ?>
+                            <tr>
+                                <td><?php echo utf8_encode($contato['NOME']); ?></td>
+                                <td><?php echo utf8_encode($contato['EMAIL']); ?></td>
+                                <td><?php echo utf8_encode($contato['TELEFONE']); ?></td>
+                                <td><a href="endereco.php?id=<?php echo $contato['ID'];?>&nome=<?php echo $contato['NOME'] ?>">Visualizar</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
              
             <div class="d-flex justify-content-center">
                 <nav>                
@@ -81,8 +89,9 @@
                         </li>
                         <?php for ($page=1; $page <= $totalPaginas; $page++) { 
                                 $active = ($page == $paginaAtual) ? 'active' : '';
+                                $perPage = $_SESSION['perPage'];
                                 echo "<li class='page-item $active'>
-                                        <a class='page-link' href='index.php?page=$page'>$page</a>
+                                        <a class='page-link' href='index.php?page=$page&perPage=$perPage'>$page</a>
                                      </li>";    
                         } ?>
                         <li class="page-item">
@@ -91,7 +100,7 @@
                         </a>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="index.php?page=<?php echo $totalPaginas ?>" >
+                            <a class="page-link" href="index.php?page=<?php echo $totalPaginas ?>&" >
                                     <span >&raquo;</span>
                             </a>
                          </li>
