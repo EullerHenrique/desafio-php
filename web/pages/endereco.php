@@ -11,6 +11,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <!-- PHP -->
     <?php include('crud/read/BuscarEnderecoContato.php'); ?>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 
 <body>
@@ -28,26 +30,26 @@
         <div class="container">
 
             <div>
-                <table class="table table-striped">
+                <table class="table table-dark table-hover">
                     <thead>
                         <tr>
-                            <th>Rua</th>
-                            <th>Número</th>
-                            <th>Bairro</th>
-                            <th>Cidade</th>
-                            <th>Estado</th>
-                            <th>CEP</th>
+                            <th class="col-1">CEP</th>
+                            <th class="col-1">Estado</th>
+                            <th class="col-3">Cidade</th>
+                            <th class="col-3">Bairro</th>
+                            <th class="col-2">Rua</th>
+                            <th class="col-1">Número</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
                             <tr>
-                                <td><?php echo utf8_encode($contato['RUA']); ?></td>
-                                <td><?php echo utf8_encode($contato['NUMERO']); ?></td>
-                                <td><?php echo utf8_encode($contato['BAIRRO']); ?></td>
-                                <td><?php echo utf8_encode($contato['CIDADE']); ?></td>
-                                <td><?php echo utf8_encode($contato['ESTADO']); ?></td>
-                                <td><?php echo utf8_encode($contato['CEP']); ?></td>
+                                <td class="col-1"><?php echo utf8_encode($contato['CEP']); ?></td>
+                                <td class="col-1"><?php echo utf8_encode($contato['ESTADO']); ?></td>
+                                <td class="col-3"><?php echo utf8_encode($contato['CIDADE']); ?></td>
+                                <td class="col-3"><?php echo utf8_encode($contato['BAIRRO']); ?></td>
+                                <td class="col-2"><?php echo utf8_encode($contato['RUA']); ?></td>
+                                <td class="col-1"><?php echo utf8_encode($contato['NUMERO']); ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

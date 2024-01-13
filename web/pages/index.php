@@ -34,7 +34,7 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center mt-3 mb-3">
-                    <span class="ms-4">Exibir</span>
+                    <span>Exibir</span>
                     <select class="form-select perPage ms-3 me-3" onChange="alterarPerPage()">
                         <option value="5" <?php if ($_GET['perPage'] == 5) echo 'selected'; ?>>5</option>
                         <option value="10" <?php if ($_GET['perPage'] == 10) echo 'selected'; ?>>10</option>
@@ -47,27 +47,27 @@
                     <span>resultados por página</span>
                 </div>
                 <div>
-                    <a class="btn btn-primary ms-auto"  href="cadastrarContato.php">Novo Contato</a>
+                    <a class="btn btn-primary"  href="cadastrarContato.php">Novo Contato</a>
                 </div>
             </div>
             
             <div>
-                <table class="table table-striped">
+                <table class="table table-dark table-hover">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Telefone</th>
-                            <th>Endereço</th>
+                            <th class="col-4">Nome</th>
+                            <th class="col-4">Email</th>
+                            <th class="col-4">Telefone</th>
+                            <th class="col-1">Endereço</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($contato = mysql_fetch_assoc($queryContatos)) { ?>
                             <tr>
-                                <td><?php echo utf8_encode($contato['NOME']); ?></td>
-                                <td><?php echo utf8_encode($contato['EMAIL']); ?></td>
-                                <td><?php echo utf8_encode($contato['TELEFONE']); ?></td>
-                                <td><a href="endereco.php?id=<?php echo $contato['ID'];?>&nome=<?php echo $contato['NOME'] ?>">Visualizar</a></td>
+                                <td class="col-4"><?php echo utf8_encode($contato['NOME']); ?></td>
+                                <td class="col-4"><?php echo utf8_encode($contato['EMAIL']); ?></td>
+                                <td class="col-4"><?php echo utf8_encode($contato['TELEFONE']); ?></td>
+                                <td class="col-1"><a class="btn btn-success" href="endereco.php?id=<?php echo $contato['ID'];?>&nome=<?php echo $contato['NOME'] ?>">Exibir</a></td>
                             </tr>
                         <?php } ?>
                     </tbody>
