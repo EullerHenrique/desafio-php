@@ -27,30 +27,35 @@
         
         <div class="container">
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Rua</th>
-                        <th>Número</th>
-                        <th>Bairro</th>
-                        <th>Cidade</th>
-                        <th>Estado</th>
-                        <th>CEP</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
+            <div>
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td><?php echo utf8_encode($contato['RUA']); ?></td>
-                            <td><?php echo utf8_encode($contato['NUMERO']); ?></td>
-                            <td><?php echo utf8_encode($contato['BAIRRO']); ?></td>
-                            <td><?php echo utf8_encode($contato['CIDADE']); ?></td>
-                            <td><?php echo utf8_encode($contato['ESTADO']); ?></td>
-                            <td><?php echo utf8_encode($contato['CEP']); ?></td>
+                            <th>Rua</th>
+                            <th>Número</th>
+                            <th>Bairro</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>CEP</th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php while ($contato = mysql_fetch_assoc($queryEndereco)) { ?>
+                            <tr>
+                                <td><?php echo utf8_encode($contato['RUA']); ?></td>
+                                <td><?php echo utf8_encode($contato['NUMERO']); ?></td>
+                                <td><?php echo utf8_encode($contato['BAIRRO']); ?></td>
+                                <td><?php echo utf8_encode($contato['CIDADE']); ?></td>
+                                <td><?php echo utf8_encode($contato['ESTADO']); ?></td>
+                                <td><?php echo utf8_encode($contato['CEP']); ?></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex justify-content-start mt-3">
+                <a class="btn btn-primary me-3"  href="index.php">Voltar</a>
+            </div>
         </div>
 
     </main>
