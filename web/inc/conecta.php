@@ -1,8 +1,7 @@
 <?php 
-
-$servername = "database";
-$username = "root";
-$password = "root";
+    $servername = "database";
+    $username = "root";
+    $password = "root";
 
     $link = mysql_connect($servername, $username, $password);
     if (!$link) {
@@ -10,4 +9,3 @@ $password = "root";
     }
     mysql_select_db('test', $link);    
 ?>
-

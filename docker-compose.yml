@@ -12,8 +12,12 @@ services:
       sh -c "
         a2enmod headers
         a2enmod rewrite
-        apt-get update && apt-get install -y apache2-utils libapache2-mod-php5
-        docker-php-ext-install curl
+        cp /usr/src/php/ext/zlib/config0.m4 /usr/src/php/ext/zlib/config.m4
+        touch /usr/local/lib/php.ini
+        echo 'memory_limit = -1' >> /usr/local/lib/php.ini
+        echo 'date.timezone = America/Sao_Paulo' >> /usr/local/lib/php.ini
+        apt-get update && apt-get install -y apache2-utils libapache2-mod-php5 
+        docker-php-ext-install curl zip zlib mbstring
         apache2-foreground
       "  
     depends_on:

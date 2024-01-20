@@ -20,7 +20,7 @@
 </head>
 
 <body>
-
+    
     <header class="mt-4">
     
         <div class="container">
@@ -48,7 +48,25 @@
                     <span>resultados por página</span>
                 </div>
                 <div>
-                    <a class="btn btn-warning me-2"  href="cadastrarContato.php">Importar Excel</a>
+                    <a class="btn btn-warning me-2" href="#" data-bs-toggle="modal" data-bs-target="#importModal">Importar Excel</a>
+                    <div class="modal fade" id="importModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content" style="background-color: #212529">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="importModalLabel">Importar Excel</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body" >
+                                    <label for="file" class="form-label">Selecione um arquivo .xls</label>
+                                    <input class="form-control" type="file" id="file" accept="application/excel, application/vnd.ms-excel, application/msexcel">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                    <button type="button" class="btn btn-primary" onClick="importarExcel()">Importar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <a class="btn btn-primary"  href="cadastrarContato.php">Novo Contato</a>
                 </div>
             </div>
@@ -118,7 +136,10 @@
             window.location.href = 'index.php?page='+<?php echo $paginaAtual ?>+'&perPage=' + perPage;
         }
 </script>    
-<!-- BOOTSTRAP -->
+
+<!-- JS -->
+<script src="../js/script.js"></script>  
+<!-- BOOTSTRAP JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 

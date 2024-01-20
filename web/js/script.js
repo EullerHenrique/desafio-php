@@ -105,3 +105,43 @@ function cadastrarContato(){
         alert(response)
     });
 }
+
+
+function importarExcel(){
+    let file = $('#file').prop('files')[0];
+
+    if(!file || file.type != 'application/vnd.ms-excel'){
+        $('#file').removeClass('is-valid').addClass('is-invalid');
+        return;
+    }else{   
+        $('#file').removeClass('is-invalid').addClass('is-valid');
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "crud/create/importExcel.php",
+        data: file,
+        processData: false,
+        xhrFields: {
+            responseType: 'blob' 
+        },
+        success: (response) => {            
+            try{
+                let url = URL.createObjectURL(response);
+                        
+                let a = document.createElement("a");
+                a.href = url;
+                a.download = "InsercoesComErros.xls";
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                window.URL.revokeObjectURL(url);
+
+                alert('Alguns contatos não foram importados! Verifique o excel gerado!')
+            }catch(e){
+                alert('Todos os contatos foram importados com sucesso!');
+            }
+        }
+    });
+}
