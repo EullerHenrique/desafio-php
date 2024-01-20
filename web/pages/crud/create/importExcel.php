@@ -27,15 +27,15 @@
         $valoresLinhasErros = array();
         for ($linha = 1; $linha <= $quantidadeLinhas; $linha++) {        
             
-            if($linha === 1){
-                $sqlInsert .= " ('$valoresColunas[0]', '$valoresColunas[1]', '$valoresColunas[2]')";
-                continue;
-            }
-
             $valoresColunas = array();
             for ($coluna = 0; $coluna < $quantidadeColunas; $coluna++) {
                 $valor = $planilha->getCellByColumnAndRow($coluna, $linha)->getValue();
                 array_push($valoresColunas, $valor);
+            }
+
+            if($linha === 1){
+                $sqlInsert .= " ('$valoresColunas[0]', '$valoresColunas[1]', '$valoresColunas[2]')";
+                continue;
             }
 
             $sqlInsert = "INSERT INTO CONTATO (NOME, EMAIL, TELEFONE) VALUES ('$valoresColunas[0]', '$valoresColunas[1]', '$valoresColunas[2]');";
